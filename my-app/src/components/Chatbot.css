@@ -1,5 +1,5 @@
 .chat-container {
-    width: 100%;
+    width: 80%;
     max-width: 600px;
     margin: auto;
     background: #1f2937;
@@ -9,7 +9,7 @@
   }
   
   .chat-box {
-    height: 400px;
+    height: 350px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
@@ -30,6 +30,21 @@
     color: #000;
     align-self: flex-start;
   }
+
+  .chat-message.bot-fake {
+    background-color: #ffe5e5;
+    border-left: 4px solid #ff4d4d;
+    color: #b30000;
+    font-weight: bold;
+  }
+  
+  .chat-message.bot-real {
+    background-color: #e6ffe6;
+    border-left: 4px solid #00cc66;
+    color: #006633;
+    font-weight: bold;
+  }
+  
   
   .chat-message.user {
     background-color: #f87171;
