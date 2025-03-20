@@ -12,7 +12,6 @@ const Navbar = () => {
         <a href="/about" className="hover:text-yellow-400">About</a>
         <a href="/project" className="hover:text-yellow-400">Project</a>
         <a href="/statistics" className="hover:text-yellow-400">Statistics</a>
-        <a href="/chatbot" className="hover:text-yellow-400">Chatbot</a> {/* ✅ Added Chatbot link */}
       </div>
       <a href="/login" className="hover:text-yellow-400 text-lg font-semibold">Login</a>
     </nav>
