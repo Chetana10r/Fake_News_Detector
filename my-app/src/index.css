@@ -1,26 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap');
+
+:root {
+  --ink: #0a0a0f;
+  --paper: #f5f0e8;
+  --paper-dark: #e8e0d0;
+  --ink-mid: #1a1a2e;
+  --ink-light: #2d2d44;
+  --accent-gold: #c9a84c;
+  --accent-gold-light: #e8c97a;
+  --accent-red: #c0392b;
+  --accent-red-light: #e74c3c;
+  --accent-green: #1a7a4a;
+  --accent-green-light: #27ae60;
+  --accent-blue: #1a3a6b;
+  --accent-blue-light: #2980b9;
+  --surface: #12121e;
+  --surface-2: #1c1c2e;
+  --surface-3: #242438;
+  --surface-4: #2e2e48;
+  --text-primary: #f0ead8;
+  --text-secondary: #a09888;
+  --text-muted: #6b6158;
+  --border: rgba(201, 168, 76, 0.2);
+  --border-bright: rgba(201, 168, 76, 0.5);
+  --glow-gold: 0 0 20px rgba(201, 168, 76, 0.3);
+  --glow-red: 0 0 20px rgba(192, 57, 43, 0.4);
+  --glow-green: 0 0 20px rgba(26, 122, 74, 0.4);
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --radius: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 16px;
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-body);
+  background: var(--ink);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(201,168,76,0.08) 0%, transparent 60%),
+    var(--ink);
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--surface); }
+::-webkit-scrollbar-thumb { background: var(--accent-gold); border-radius: 3px; }
 
-@keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 0.5; }
-  100% { opacity: 1; }
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--transition);
 }
-.animate-blink {
-  animation: blink 0.5s infinite alternate;
+.btn-primary {
+  background: var(--accent-gold);
+  color: var(--ink);
 }
+.btn-primary:hover {
+  background: var(--accent-gold-light);
+  transform: translateY(-1px);
+  box-shadow: var(--glow-gold);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+.btn-ghost:hover {
+  border-color: var(--border-bright);
+  color: var(--text-primary);
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  transition: var(--transition);
+}
+.card:hover {
+  border-color: var(--border-bright);
+}
+
+/* ── Form elements ── */
+input, textarea, select {
+  width: 100%;
+  background: var(--surface-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  outline: none;
+  transition: var(--transition);
+}
+input:focus, textarea:focus, select:focus {
+  border-color: var(--accent-gold);
+  background: var(--surface-4);
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.1);
+}
+input::placeholder, textarea::placeholder { color: var(--text-muted); }
+
+/* ── Tags / Badges ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.badge-fake { background: rgba(192,57,43,0.15); color: var(--accent-red-light); border: 1px solid rgba(192,57,43,0.3); }
+.badge-real { background: rgba(26,122,74,0.15); color: var(--accent-green-light); border: 1px solid rgba(26,122,74,0.3); }
+.badge-gold { background: rgba(201,168,76,0.15); color: var(--accent-gold); border: 1px solid var(--border); }
+
+/* ── Divider ── */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-bright), transparent);
+  margin: 24px 0;
+}
+
+/* ── Section headers ── */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  margin-bottom: 8px;
+}
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(300%); }
+}
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+@keyframes blink-dot {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50%       { opacity: 1;   transform: scale(1.2); }
+}
+
+.fade-up { animation: fadeUp 0.5s ease forwards; }
+
+/* ── Confidence bar ── */
+.conf-bar-track {
+  height: 6px;
+  background: var(--surface-3);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+.conf-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.conf-bar-fill.fake { background: linear-gradient(90deg, var(--accent-red), var(--accent-red-light)); }
+.conf-bar-fill.real { background: linear-gradient(90deg, var(--accent-green), var(--accent-green-light)); }
